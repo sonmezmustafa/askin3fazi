@@ -1,0 +1,30 @@
+---
+permalink: /kanit/
+baslik: Kanıt
+---
+<article class="metin">
+  <h1>Kanıt</h1>
+  <p>Bu sitedeki her şiir, yayımlanmadan önce bağımsız iki zaman damgasıyla kayda geçirilir. Damga, şiirin metninin o tarihte var olduğunu gösterir.</p>
+
+  <h2>Neler damgalanır</h2>
+  <p>Her şiirin sayfasında üç dosyaya bağlantı vardır:</p>
+  <ul>
+    <li><strong>metin</strong>: damgalanan metnin kendisi (UTF-8, düz metin).</li>
+    <li><strong>.tsr</strong>: <a href="https://freetsa.org">FreeTSA</a> zaman damgası sunucusunun RFC 3161 yanıtı.</li>
+    <li><strong>.ots</strong>: Bitcoin blok zincirine bağlanan <a href="https://opentimestamps.org">OpenTimestamps</a> kanıtı.</li>
+  </ul>
+  <p>Damga sunucularına şiirin metni değil, yalnızca SHA-256 parmak izi gönderilir.</p>
+
+  <h2>Nasıl doğrulanır</h2>
+  <p>Metin dosyasının parmak izi, sayfada yazan SHA-256 değeriyle aynı olmalıdır:</p>
+  <pre><code>sha256sum v1.txt</code></pre>
+  <p>FreeTSA damgası (<a href="{{ '/kanit/freetsa-cacert.pem' | relative_url }}">cacert.pem</a> ve <a href="{{ '/kanit/freetsa-tsa.crt' | relative_url }}">tsa.crt</a> FreeTSA'nın kendi sertifikalarıdır):</p>
+  <pre><code>openssl ts -verify -data v1.txt -in v1.txt.tsr -CAfile cacert.pem -untrusted tsa.crt
+openssl ts -reply -in v1.txt.tsr -text</code></pre>
+  <p>OpenTimestamps damgası:</p>
+  <pre><code>ots verify v1.txt.ots</code></pre>
+  <p>ya da dosyaları <a href="https://opentimestamps.org">opentimestamps.org</a> sayfasına sürükleyin.</p>
+
+  <h2>Sürümler</h2>
+  <p>Bir şiir sonradan değişirse eski damga silinmez. Yeni metin <code>v2</code>, <code>v3</code> adıyla ayrıca damgalanır.</p>
+</article>

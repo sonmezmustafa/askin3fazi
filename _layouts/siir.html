@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<article>
+  <h1>{{ page.baslik }}</h1>
+  <div class="siir">{{ content | strip }}</div>
+  {% if page.tarih %}<p class="tarih">{{ page.tarih }}</p>{% endif %}
+  {% if page.damga_sha256 %}
+  <p class="damga">
+    Zaman damgası: {{ page.damga_zaman }}<br>
+    SHA-256: <code>{{ page.damga_sha256 }}</code><br>
+    <a href="{{ '/kanit/' | append: page.slug | append: '/' | append: page.damga_surum | append: '.txt' | relative_url }}">metin</a> ·
+    <a href="{{ '/kanit/' | append: page.slug | append: '/' | append: page.damga_surum | append: '.txt.tsr' | relative_url }}">.tsr</a> ·
+    <a href="{{ '/kanit/' | append: page.slug | append: '/' | append: page.damga_surum | append: '.txt.ots' | relative_url }}">.ots</a> ·
+    <a href="{{ '/kanit/' | relative_url }}">nasıl doğrulanır</a>
+  </p>
+  {% endif %}
+</article>

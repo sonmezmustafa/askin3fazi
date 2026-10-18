@@ -1,0 +1,26 @@
+title: Aşkın 3 Fazı
+url: "https://askin3fazi.com"
+baseurl: ""
+lang: tr
+timezone: Europe/Istanbul
+taslak: true
+
+collections:
+  siirler:
+    output: true
+    permalink: /siir/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: siirler
+    values:
+      layout: siir
+
+exclude:
+  - README.md
+  - .gitignore

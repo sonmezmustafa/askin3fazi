@@ -1,0 +1,7 @@
+{
+  "name": "askin3fazi-araclar",
+  "private": true,
+  "dependencies": {
+    "opentimestamps": "0.4.9"
+  }
+}
