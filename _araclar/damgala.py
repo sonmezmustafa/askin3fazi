@@ -12,6 +12,7 @@ from pathlib import Path
 
 KOK = Path(__file__).resolve().parent.parent
 SIIRLER = KOK / "_siirler"
+METINLER = KOK / "_metinler"
 KANIT = KOK / "kanit"
 OTS_CLI = KOK / "_araclar" / "node_modules" / "opentimestamps" / "ots-cli.js"
 TSA_URL = "https://freetsa.org/tsr"
@@ -134,10 +135,11 @@ def zaman_yazisi(zaman):
 
 
 def damgala(_):
-    if not SIIRLER.exists():
-        print("Henüz şiir yok.")
+    dosyalar = sorted(METINLER.glob("*.html")) + sorted(SIIRLER.glob("*.html"))
+    if not dosyalar:
+        print("Henüz metin yok.")
         return
-    for yol in sorted(SIIRLER.glob("*.html")):
+    for yol in dosyalar:
         satirlar, bilgi, govde = oku(yol)
         metin = damga_metni(bilgi, govde).encode("utf-8")
         klasor = KANIT / yol.stem

@@ -52,6 +52,18 @@
     kayitlar.push({ tur: 'bolum', ad: b.getAttribute('data-ad'), sayfa: b, id: 'b-' + b.getAttribute('data-bolum') });
   });
 
+  Array.prototype.forEach.call(kitap.querySelectorAll('template.metin-k'), function (t) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = t.innerHTML;
+    var parcalar = tmp.textContent.replace(/\r/g, '').split('\n').filter(function (s) { return s.trim(); }).map(function (s) {
+      var p = document.createElement('p');
+      p.textContent = s.trim();
+      return p;
+    });
+    var s = yerlestir(t, 'metin-s', parcalar.splice(0, 1), parcalar);
+    kayitlar.push({ tur: 'metin', ad: t.getAttribute('data-baslik'), sayfa: s[0], id: 'o-' + t.getAttribute('data-slug') });
+  });
+
   Array.prototype.forEach.call(kitap.querySelectorAll('template.siir-k'), function (t) {
     var h = document.createElement('h2');
     h.textContent = t.getAttribute('data-baslik');

@@ -10,6 +10,8 @@ collections:
   siirler:
     output: true
     permalink: /siir/:name/
+  metinler:
+    output: false
 
 defaults:
   - scope:

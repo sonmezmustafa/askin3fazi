@@ -103,6 +103,9 @@ a { color: inherit; text-underline-offset: 3px; }
 .fihrist-s a[data-hedef] span:first-child { flex: 1; }
 .fihrist-s a[data-hedef]:hover span:first-child { text-decoration: underline; }
 .fihrist-s .f-bolum { margin-top: 1.1em; }
+.metin-s .ic { display: flex; flex-direction: column; justify-content: safe center; }
+.metin-s p { margin: 0 0 1em; text-indent: 1.2em; }
+.metin-s p:first-child { text-indent: 0; }
 .fihrist-s .f-siir { padding-left: 1.2em; }
 .fihrist-s .f-no { color: var(--soluk); }
 .kunye { margin-top: 2.4em; color: var(--soluk); font-size: 0.75em; line-height: 1.55; }

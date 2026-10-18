@@ -22,6 +22,8 @@ layout: null
   <div class="cerceve">
   <div id="kitap" class="olc">
     <div class="page kapak-s" data-density="hard"><img src="{{ '/assets/kapak.jpg' | relative_url }}" width="1080" height="1680" alt="{{ site.title }}"></div>
+    {% assign onyazi = site.metinler | where: "slug", "onyazi" | first %}
+    {% if onyazi %}<template class="metin-k" data-slug="onyazi" data-baslik="{{ onyazi.baslik | escape }}">{{ onyazi.content | strip }}</template>{% endif %}
     {% for faz in site.data.fazlar %}
     <div class="page koyu" data-bolum="{{ faz.slug }}" data-ad="{{ faz.sira_adi }}: {{ faz.ad }}"><div class="ic bolum">
       {% include sekil.html slug=faz.slug %}
