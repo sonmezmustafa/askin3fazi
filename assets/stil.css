@@ -42,10 +42,10 @@ a { color: inherit; text-underline-offset: 3px; }
   padding: 16px;
 }
 
-.cerceve { width: min(100%, calc((100vh - 112px) * 1.2857)); width: min(100%, calc((100dvh - 112px) * 1.2857)); }
+.cerceve { width: min(100%, calc((100vh - 140px) * 1.2857)); width: min(100%, calc((100dvh - 140px) * 1.2857)); }
 
 @media (max-width: 699px) {
-  .cerceve { width: min(100%, calc((100dvh - 112px) * 0.6429)); }
+  .cerceve { width: min(100%, calc((100dvh - 140px) * 0.6429)); }
 }
 
 .page {
@@ -131,6 +131,10 @@ a { color: inherit; text-underline-offset: 3px; }
 #geri, #ileri { font-size: 2rem; line-height: 1; }
 #fihrist-git { color: var(--koyu-soluk); text-decoration: underline; text-underline-offset: 3px; }
 #konum { min-width: 6ch; text-align: center; }
+
+.alt-kitap { padding: 0 16px 14px; text-align: center; font-size: 0.8125rem; color: var(--koyu-soluk); }
+.alt-kitap a { color: var(--koyu-soluk); }
+.tek .alt a { color: var(--koyu-soluk); }
 
 .yedek { max-width: 34rem; margin: 0 auto; padding: 24px 16px; color: var(--koyu-yazi); }
 

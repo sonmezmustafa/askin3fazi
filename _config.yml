@@ -4,6 +4,7 @@ baseurl: ""
 lang: tr
 timezone: Europe/Istanbul
 taslak: true
+eposta: cemustafasonmez@gmail.com
 
 collections:
   siirler:
