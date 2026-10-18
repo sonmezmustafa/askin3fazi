@@ -6,6 +6,9 @@
 <title>{% if page.baslik %}{{ page.baslik }} · {% endif %}{{ site.title }}</title>
 {% if site.taslak %}<meta name="robots" content="noindex, nofollow">{% endif %}
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:title" content="{% if page.baslik %}{{ page.baslik }} · {% endif %}{{ site.title }}">
+<meta property="og:image" content="{{ '/assets/kapak.jpg' | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="{{ '/assets/stil.css' | relative_url }}">
 </head>
 <body>

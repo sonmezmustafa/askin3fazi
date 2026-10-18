@@ -1,6 +1,6 @@
 ---
 ---
-<h1 class="kitap">{{ site.title }}</h1>
+<h1 class="kapak"><img src="{{ '/assets/kapak.jpg' | relative_url }}" width="1080" height="1680" alt="{{ site.title }}"></h1>
 {% for faz in site.data.fazlar %}
 {% assign siirler = site.siirler | where: "faz", faz.numara | sort: "sira" %}
 <section class="faz">
