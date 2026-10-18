@@ -9,19 +9,16 @@
 <meta property="og:title" content="{% if page.baslik %}{{ page.baslik }} · {% endif %}{{ site.title }}">
 <meta property="og:image" content="{{ '/assets/kapak.jpg' | absolute_url }}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0b">
 <link rel="stylesheet" href="{{ '/assets/stil.css' | relative_url }}">
 </head>
-<body>
-<header class="ust">
-  <a class="ad" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-  <nav><a href="{{ '/kanit/' | relative_url }}">Kanıt</a></nav>
-</header>
-<main>
+<body class="tek">
+<header class="ust"><a href="{{ '/' | relative_url }}{% if page.collection == 'siirler' %}#s-{{ page.slug }}{% endif %}">‹ {{ site.title }}</a></header>
+<main class="kagit">
 {{ content }}
 </main>
 <footer class="alt">
   <p>© {{ site.time | date: '%Y' }} askin3fazi.com · Tüm hakları alan adının sahibine kayıtlıdır.</p>
-  <p>Şiirler izinsiz kopyalanamaz, çoğaltılamaz, yayımlanamaz.</p>
 </footer>
 </body>
 </html>

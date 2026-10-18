@@ -1,15 +1,61 @@
 ---
+layout: null
 ---
-<h1 class="kapak"><img src="{{ '/assets/kapak.jpg' | relative_url }}" width="1080" height="1680" alt="{{ site.title }}"></h1>
-{% for faz in site.data.fazlar %}
-{% assign siirler = site.siirler | where: "faz", faz.numara | sort: "sira" %}
-<section class="faz">
-  <h2>{{ faz.ad }}</h2>
-  {% if siirler.size > 0 %}
-  <ol>
-    {% for s in siirler %}<li><a href="{{ s.url | relative_url }}">{{ s.baslik }}</a></li>
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.title }}</title>
+{% if site.taslak %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<link rel="canonical" href="{{ '/' | absolute_url }}">
+<meta property="og:title" content="{{ site.title }}">
+<meta property="og:image" content="{{ '/assets/kapak.jpg' | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="preload" as="image" href="{{ '/assets/kapak.jpg' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/stil.css' | relative_url }}">
+</head>
+<body class="okuyucu">
+<h1 class="gizli">{{ site.title }}</h1>
+<div class="masa">
+  <div class="cerceve">
+  <div id="kitap" class="olc">
+    <div class="page kapak-s" data-density="hard"><img src="{{ '/assets/kapak.jpg' | relative_url }}" width="1080" height="1680" alt="{{ site.title }}"></div>
+    {% for faz in site.data.fazlar %}
+    <div class="page koyu" data-bolum="{{ faz.slug }}" data-ad="{{ faz.sira_adi }}: {{ faz.ad }}"><div class="ic bolum">
+      {% include sekil.html slug=faz.slug %}
+      <p class="sira-adi">{{ faz.sira_adi }}</p>
+      <h2>{{ faz.ad }}</h2>
+    </div></div>
+    {% assign ss = site.siirler | where: "faz", faz.numara | sort: "sira" %}
+    {% for s in ss %}
+    <template class="siir-k" data-slug="{{ s.slug }}" data-baslik="{{ s.baslik | escape }}" data-tarih="{{ s.tarih | escape }}">{{ s.content | strip }}</template>
     {% endfor %}
-  </ol>
-  {% endif %}
-</section>
-{% endfor %}
+    {% endfor %}
+    <template class="fihrist-k"></template>
+    <div class="page arka-s" data-density="hard"><div class="ic"><p>askin3fazi.com</p></div></div>
+  </div>
+  </div>
+</div>
+<nav class="kontrol" aria-label="Kitap">
+  <button type="button" id="geri" aria-label="Önceki sayfa">‹</button>
+  <span id="konum"></span>
+  <button type="button" id="ileri" aria-label="Sonraki sayfa">›</button>
+  <button type="button" id="fihrist-git">Fihrist</button>
+</nav>
+<template id="kunye-k">
+  <div class="kunye">
+    <p>© {{ site.time | date: '%Y' }} askin3fazi.com · Tüm hakları alan adının sahibine kayıtlıdır.</p>
+    <p>Bu kitaptaki şiirler izinsiz kopyalanamaz, çoğaltılamaz, yayımlanamaz. Her şiir yayımlanmadan önce zaman damgasıyla kayda geçirilmiştir: <a href="{{ '/kanit/' | relative_url }}">Kanıt</a>.</p>
+  </div>
+</template>
+<noscript>
+  <div class="yedek">
+    {% for faz in site.data.fazlar %}<h2>{{ faz.sira_adi }}: {{ faz.ad }}</h2><ul>{% assign ss = site.siirler | where: "faz", faz.numara | sort: "sira" %}{% for s in ss %}<li><a href="{{ s.url | relative_url }}">{{ s.baslik }}</a></li>{% endfor %}</ul>{% endfor %}
+  </div>
+</noscript>
+<script src="{{ '/assets/js/page-flip.browser.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/kitap.js' | relative_url }}"></script>
+</body>
+</html>

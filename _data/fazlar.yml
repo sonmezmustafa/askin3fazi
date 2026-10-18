@@ -1,6 +1,12 @@
 - numara: 1
-  ad: "1. Faz: Nokta"
+  sira_adi: "Birinci Faz"
+  ad: "Nokta"
+  slug: nokta
 - numara: 2
-  ad: "2. Faz: Çember"
+  sira_adi: "İkinci Faz"
+  ad: "Çember"
+  slug: cember
 - numara: 3
-  ad: "3. Faz: Küre"
+  sira_adi: "Üçüncü Faz"
+  ad: "Küre"
+  slug: kure
