@@ -132,7 +132,7 @@
     maxHeight: 1120,
     showCover: true,
     usePortrait: true,
-    mobileScrollSupport: false,
+    mobileScrollSupport: true,
     maxShadowOpacity: 0.45,
     flippingTime: 800
   });
@@ -152,6 +152,10 @@
   hash();
   yaz();
   window.addEventListener('hashchange', hash);
+
+  kitap.addEventListener('mousedown', function (e) {
+    if (e.target.closest('.dize, .ic p, .ic h2')) e.stopPropagation();
+  }, true);
 
   kitap.addEventListener('click', function (e) {
     var a = e.target.closest('a[data-hedef]');
