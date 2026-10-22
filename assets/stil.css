@@ -135,8 +135,6 @@ a { color: inherit; text-underline-offset: 3px; }
 #fihrist-git { color: var(--koyu-soluk); text-decoration: underline; text-underline-offset: 3px; }
 #konum { min-width: 6ch; text-align: center; }
 
-.alt-kitap { padding: 0 16px 14px; text-align: center; font-size: 0.8125rem; color: var(--koyu-soluk); }
-.alt-kitap a { color: var(--koyu-soluk); }
 .tek .alt a { color: var(--koyu-soluk); }
 
 .yedek { max-width: 34rem; margin: 0 auto; padding: 24px 16px; color: var(--koyu-yazi); }
