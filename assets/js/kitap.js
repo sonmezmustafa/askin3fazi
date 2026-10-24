@@ -35,11 +35,19 @@
     parcalar.forEach(function (x) {
       p.firstChild.appendChild(x);
       if (tasiyor(p) && p.firstChild.children.length > 1) {
-        p.firstChild.removeChild(x);
+        var eski = p.firstChild;
+        eski.removeChild(x);
         p = sayfa(sinif + ' devam');
-        p.firstChild.appendChild(x);
         oge.parentNode.insertBefore(p, oge);
         sayfalar.push(p);
+        if (x.classList.contains('bos')) return;
+        var bos = eski.querySelectorAll('.dize.bos');
+        var kes = bos[bos.length - 1];
+        if (kes && kes !== eski.firstChild) {
+          while (kes.nextSibling) p.firstChild.appendChild(kes.nextSibling);
+          eski.removeChild(kes);
+        }
+        p.firstChild.appendChild(x);
       }
     });
     oge.parentNode.removeChild(oge);
