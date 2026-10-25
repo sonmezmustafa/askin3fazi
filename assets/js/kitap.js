@@ -162,7 +162,10 @@
   window.addEventListener('hashchange', hash);
 
   kitap.addEventListener('mousedown', function (e) {
-    if (e.target.closest('.dize, .ic p, .ic h2')) e.stopPropagation();
+    if (e.target.closest('.dize, .ic p, .ic h2, a[data-hedef]')) e.stopPropagation();
+  }, true);
+  kitap.addEventListener('touchstart', function (e) {
+    if (e.target.closest('a[data-hedef]')) e.stopPropagation();
   }, true);
 
   kitap.addEventListener('click', function (e) {
